@@ -19,7 +19,7 @@ def extract_sequence_range(sequences, positions):
     extracted_sequences = {}
     for accession, sequence in sequences.items():
         start, end = positions.get(accession, (1, len(sequence)))
-        extracted_sequence = sequence[start-1:end]
+        extracted_sequence = sequence[start:end]
         extracted_sequences[accession] = extracted_sequence
     return extracted_sequences
 
@@ -27,8 +27,8 @@ def extract_sequence_range(sequences, positions):
 fasta_file_path = "1Dataset_file_GB.fasta"
 sequences = read_fasta_file(fasta_file_path)
 positions = {
-    "AE007317.1": (70250, 70401),
-    "AP017971.1": (81032, 81184),
+    "AE007317.1": (70251, 70402),
+    "AP017971.1": (81033, 81185),
     # accessions and positions here
 }
 extracted_sequences = extract_sequence_range(sequences, positions)

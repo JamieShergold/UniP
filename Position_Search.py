@@ -1,4 +1,4 @@
-def read_fasta_file(file_path):
+def read_file(file_path):
     sequences = {}
     with open(file_path, "r") as f:
         current_sequence = ""
@@ -15,7 +15,7 @@ def read_fasta_file(file_path):
     return sequences
 
 
-def extract_sequence_range(sequences, positions):
+def extract_position_range(sequences, positions):
     extracted_sequences = {}
     for accession, sequence in sequences.items():
         start, end = positions.get(accession, (1, len(sequence)))
@@ -25,13 +25,13 @@ def extract_sequence_range(sequences, positions):
 
 
 fasta_file_path = "1Dataset_file_GB.fasta"
-sequences = read_fasta_file(fasta_file_path)
+sequences = read_file(fasta_file_path)
 positions = {
     "AE007317.1": (70251, 70402),
     "AP017971.1": (81033, 81185),
     # accessions and positions here
 }
-extracted_sequences = extract_sequence_range(sequences, positions)
+extracted_sequences = extract_position_range(sequences, positions)
 
 output_file_path = "extracted_sequences.txt"
 with open(output_file_path, "w") as f:
